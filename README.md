@@ -23,15 +23,15 @@
 
 ## Equipe
 
-Grupo: `[nome do grupo]`
+Grupo: `Play Masters`
 
 | Nome completo | RM |
 |---|---|
-| `[Nome 1]` | `[RM]` |
-| `[Nome 2]` | `[RM]` |
-| `[Nome 3]` | `[RM]` |
-| `[Nome 4]` | `[RM]` |
-| `[Nome 5]` | `[RM]` |
+| `Enrico Bertolacini` | `570999` |
+| `Matheus Sá Teles` | `571719` |
+| `Julia Lima da Silva` | `569203` |
+| `Pedro Antonio Borges` | `572549` |
+| `Guilherme Alvejan` | `570835` |
 
 ## Links da entrega
 
@@ -147,12 +147,3 @@ Para acompanhar as mensagens, use qualquer cliente MQTT (por exemplo, MQTTX ou M
 - O servidor MQTT apenas repassa mensagens; a leitura desses dados pelo app web é um próximo passo.
 - Possíveis evoluções: calibração em campo, envio de localização, histórico dos trechos e integração com o mapa de barreiras do app.
 
-## 7. Estrutura do repositório
-
-```
-/
-├── sketch.ino        # código do ESP32 (lógica de borda e nuvem opcional)
-├── diagram.json      # circuito do Wokwi
-├── libraries.txt     # biblioteca PubSubClient (usada se a nuvem estiver ativa)
-└── README.md         # este arquivo
-```
