@@ -35,7 +35,7 @@ Grupo: `Play Masters - 1ESR`
 ## Links da entrega
 
 - Simulação no Wokwi: `https://wokwi.com/projects/480337157663368193?classId=f535e5fe-6072-4026-9fff-e58d432aa23c&assignmentId=61fbfa94-73f3-4d42-8bb9-7bb1a1477031&submissionId=e3affac8-2f97-e651-9bf7-a406e7d56640`
-- Vídeo no YouTube: `https://www.youtube.com/watch?v=g5eMRWIqPco&t=9s`
+- Vídeo no YouTube: `https://www.youtube.com/watch?v=S0a7PLmmi7Y&t=1s`
 
 ---
 
