@@ -1,7 +1,7 @@
 # CaminhoLivre
 
 **Global Solution 2026.2 · CitizenTech · Engenharia de Software 1º ano · FIAP**
-**Disciplina: Edge Computing & Computer Systems — "o sensor que decide sozinho"**
+**Disciplina: Edge Computing & Computer Systems **
 
 ---
 
@@ -10,12 +10,11 @@
 | Campo | Preenchimento |
 |---|---|
 | **Nome da CitizenTech** | CaminhoLivre |
-| **Cidade e bairro** | São Paulo, região da Av. Paulista (trajeto da estação de metrô até a FIAP) `[confirmar o trecho escolhido]` |
-| **Cidadão beneficiado** | Pessoa com mobilidade reduzida que circula pelo bairro: cadeirantes, idosos e quem empurra carrinho de bebê. `[citar a persona/entrevistado]` |
+| **Cidade** | São Paulo |
+| **Cidadão beneficiado** | Pessoa com mobilidade reduzida que circula pelo bairro: cadeirantes, idosos e quem empurra carrinho de bebê. |
 | **Problema, em uma frase** | Pessoas com mobilidade reduzida não têm como saber, antes de sair de casa, quais calçadas do trajeto têm buracos, degraus ou falta de rampa, e acabam se arriscando ou desistindo de sair. |
 | **Como funciona** | Um dispositivo com ESP32 acoplado à cadeira ou ao carrinho mede vibração e inclinação, decide localmente se o trecho é Normal, Atenção ou Crítico e alerta por LED e buzzer, mesmo sem internet. Quando há conexão, envia a telemetria por MQTT para um servidor, de onde os dados podem alimentar o mapa de barreiras do app web. |
 | **O que cada parte faz** | **Sensor (Edge, este repositório):** ESP32 + MPU6050, lógica de borda e alertas locais, com envio MQTT opcional. **Lógica (Python):** cadastro de barreiras e trajetos, nota de acessibilidade, persistência em JSON. **Matemática:** custo do trajeto como função da distância e das barreiras, com otimização. **Interface e Interação (React):** app com CRUD de barreiras e nota por rota. **Experiência:** atores, requisitos, regras de negócio e protótipo. **Pitch:** história da pessoa entrevistada. |
-| **Link do repositório** | `[colar o link do repositório]` |
 | **Indicador de impacto** | Número de barreiras mapeadas e removidas; porcentagem do trajeto-piloto com nota de acessibilidade calculada; redução da nota de risco do trajeto após a escolha da rota sugerida. |
 | **ODS conectados** | **ODS 10** (Redução das desigualdades): garante o direito de circular a quem tem mobilidade reduzida. **ODS 11** (Cidades e comunidades sustentáveis): torna o espaço público mais acessível e seguro. **ODS 3** (Saúde e bem-estar): reduz o risco de quedas e acidentes. |
 
@@ -35,8 +34,8 @@ Grupo: `Play Masters`
 
 ## Links da entrega
 
-- Simulação no Wokwi: `[colar o link público]`
-- Vídeo no YouTube: `[colar o link do vídeo]`
+- Simulação no Wokwi: `https://wokwi.com/projects/480337157663368193?classId=f535e5fe-6072-4026-9fff-e58d432aa23c&assignmentId=61fbfa94-73f3-4d42-8bb9-7bb1a1477031&submissionId=e3affac8-2f97-e651-9bf7-a406e7d56640`
+- Vídeo no YouTube: `https://www.youtube.com/watch?v=g5eMRWIqPco&t=9s`
 
 ---
 
@@ -96,7 +95,7 @@ O ciclo de funcionamento é: **medir → validar → suavizar → decidir → al
 
 ### Justificativa dos limites
 
-- **Inclinação:** 4,8° corresponde a cerca de 8,33% de inclinação, que é o valor máximo de rampa da norma de acessibilidade NBR 9050. `[confirmar o número na norma antes da entrega]`
+- **Inclinação:** 4,8° corresponde a cerca de 8,33% de inclinação, que é o valor máximo de rampa da norma de acessibilidade NBR 9050. `
 - **Vibração:** 0,15 g e 0,40 g são valores adotados para esta simulação. Em um protótipo físico, precisariam ser calibrados com testes reais em cadeira de rodas e carrinho.
 
 ### Saída no Serial Monitor
@@ -123,13 +122,13 @@ A cada 0,5 s o dispositivo imprime a vibração e a inclinação suavizadas e o 
 2. Cole o conteúdo de `sketch.ino` na aba do código e o de `diagram.json` na aba do diagrama.
 3. Para usar a nuvem, crie um arquivo `libraries.txt` com a linha `PubSubClient` e altere `USAR_NUVEM` para `1` no código. Sem a nuvem, não é necessária nenhuma biblioteca.
 
-## 5. Comunicação com o servidor (opcional)
+## 5. Comunicação com o servidor
 
 O envio para a nuvem **não é obrigatório** e o alerta local nunca depende dele. Quando ativado (`USAR_NUVEM = 1`), o dispositivo:
 
 - conecta ao Wi-Fi simulado do Wokwi (`Wokwi-GUEST`) em segundo plano;
 - conecta por MQTT ao servidor disponibilizado pelo professor, `3.93.68.31`, porta `1883`, sem autenticação;
-- publica no tópico `fiap/gs/caminholivre/play_masters/telemetria` `[confirmar o tópico usado]`, a cada 2 s e imediatamente a cada mudança de estado;
+- publica no tópico `fiap/gs/caminholivre/play_masters/telemetria`, a cada 2 s e imediatamente a cada mudança de estado;
 - se o Wi-Fi ou o servidor ficarem indisponíveis, continua medindo e alertando normalmente e tenta reconectar a cada 10 s.
 
 Exemplo de mensagem publicada:
@@ -140,10 +139,4 @@ Exemplo de mensagem publicada:
 
 Para acompanhar as mensagens, use qualquer cliente MQTT (por exemplo, MQTTX ou MyMQTT) conectado ao servidor e assinando o tópico do grupo. Não assine tópicos genéricos, pois o servidor é compartilhado com outros grupos. As mensagens contêm apenas estado e leituras do sensor, sem dados pessoais.
 
-## 6. Limitações e próximos passos
-
-- O projeto é uma **simulação** no Wokwi. Os limites de vibração precisam de calibração com um protótipo físico.
-- O dispositivo **não envia localização**. A associação de cada leitura a um trecho da calçada ainda precisa ser feita (por exemplo, com GPS ou marcação do trajeto).
-- O servidor MQTT apenas repassa mensagens; a leitura desses dados pelo app web é um próximo passo.
-- Possíveis evoluções: calibração em campo, envio de localização, histórico dos trechos e integração com o mapa de barreiras do app.
 
