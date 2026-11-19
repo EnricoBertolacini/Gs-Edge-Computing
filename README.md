@@ -22,7 +22,7 @@
 
 ## Equipe
 
-Grupo: `Play Masters`
+Grupo: `Play Masters - 1ESR`
 
 | Nome completo | RM |
 |---|---|
